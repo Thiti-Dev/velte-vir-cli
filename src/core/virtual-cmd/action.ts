@@ -1,5 +1,11 @@
 import { historyLogs, userName } from "../../store/main";
-import { CD_CMD, CLEAR_CMD, UN_RECOGNIZE_CMD, WHO_AM_I_CMD } from "./constants";
+import {
+  CD_CMD,
+  CLEAR_CMD,
+  HELP_ME_CMD,
+  UN_RECOGNIZE_CMD,
+  WHO_AM_I_CMD,
+} from "./constants";
 import { get } from "svelte/store";
 
 const ACTIONS: Record<string, Function> = {
@@ -7,6 +13,7 @@ const ACTIONS: Record<string, Function> = {
   [UN_RECOGNIZE_CMD]: unRecognizeCommand,
   [WHO_AM_I_CMD]: whoAmICommand,
   [CD_CMD]: CDCommand,
+  [HELP_ME_CMD]: helpMeCommand,
 };
 
 function addLog(text: string) {
@@ -65,10 +72,22 @@ function whoAmICommand(rawCMD: string) {
 }
 
 function CDCommand(rawCMD: string) {
-  console.log(rawCMD);
   addLog(`
   <div class="log_text">
       -> cd thru directories is still WIP feature
+  </div>
+  `);
+}
+
+function helpMeCommand(rawCMD: string) {
+  addLog(`
+  <div class="log_text">
+      <p>List of available commands at the moment</p>
+      <ul>
+        <li>clear</li>
+        <li>whoami</li>
+        <li>mathematic-expression <- Ex. 1+2, 3+4+5</li>
+      </ul>
   </div>
   `);
 }
