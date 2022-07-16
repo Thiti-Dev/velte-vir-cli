@@ -2,7 +2,7 @@ import { historyLogs, userName } from "../../store/main";
 import { CD_CMD, CLEAR_CMD, UN_RECOGNIZE_CMD, WHO_AM_I_CMD } from "./constants";
 import { get } from "svelte/store";
 
-const ACTIONS: Record<string, any> = {
+const ACTIONS: Record<string, Function> = {
   [CLEAR_CMD]: clearVirtualConsole,
   [UN_RECOGNIZE_CMD]: unRecognizeCommand,
   [WHO_AM_I_CMD]: whoAmICommand,
